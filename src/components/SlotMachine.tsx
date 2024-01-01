@@ -43,10 +43,7 @@ export const SlotMachine: React.FC = () => {
       >
         スピン
       </Button>
-      <div>
-        <Button onClick={handleOpenDialog}>ジャックポットを見る</Button>
-        {showDialog && <JackpotDialog />}
-      </div>
+      {isJackpot && <JackpotDialog />}
       {isWin && <Box sx={{marginTop: 2}}>勝利！</Box>}
       {isJackpot && <Box sx={{marginTop: 2}}>ジャックポット！</Box>}
     </Box>

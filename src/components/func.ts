@@ -11,7 +11,10 @@ export const spinReels = (
   );
 
   const hasWildCard = newReels.some((tile) => tile.id === WILD_CARD_ID);
-  const isJackpot = newReels.every((tile) => tile.id === SEVEN_CARD_ID);
+  const isJackpot =
+    newReels.every(
+      (tile) => tile.id === SEVEN_CARD_ID || tile.id === WILD_CARD_ID
+    ) && newReels.some((tile) => tile.id === SEVEN_CARD_ID);
 
   let win = false;
   let points = 0;

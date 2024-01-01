@@ -25,11 +25,11 @@ export const SYMBOLS: SymbolTile[] = [
     label: CHERRY_SYMBOL,
     point: 10,
   },
-  {
-    id: LEMON_ID,
-    label: LEMON_SYMBOL,
-    point: 10,
-  },
+  //   {
+  //     id: LEMON_ID,
+  //     label: LEMON_SYMBOL,
+  //     point: 10,
+  //   },
   //   {
   //     id: ORANGE_ID,
   //     label: ORANGE_SYMBOL,
