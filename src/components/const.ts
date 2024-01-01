@@ -1,5 +1,8 @@
 import {SymbolTile} from "./type";
 
+export const INITIAL_COINS = 100;
+export const BET_COINS = 3;
+
 export const CHERRY_ID = "cherry";
 export const LEMON_ID = "lemon";
 export const ORANGE_ID = "orange";
@@ -16,26 +19,26 @@ export const SYMBOLS: SymbolTile[] = [
   {
     id: CHERRY_ID,
     label: CHERRY_SYMBOL,
-    point: 100,
+    point: 10,
   },
   {
     id: LEMON_ID,
     label: LEMON_SYMBOL,
-    point: 300,
+    point: 10,
   },
   {
     id: ORANGE_ID,
     label: ORANGE_SYMBOL,
-    point: 400,
+    point: 10,
   },
-  //   {
-  //     id: GRAPE_ID,
-  //     label: GRAPE_SYMBOL,
-  //     point: 20,
-  //   },
-  //   {
-  //     id: WATERMELON_ID,
-  //     label: WATERMELON_SYMBOL,
-  //     point: 30,
-  //   },
+  {
+    id: GRAPE_ID,
+    label: GRAPE_SYMBOL,
+    point: 20,
+  },
+  {
+    id: WATERMELON_ID,
+    label: WATERMELON_SYMBOL,
+    point: 30,
+  },
 ];

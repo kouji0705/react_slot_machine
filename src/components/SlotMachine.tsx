@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import {Reel} from "./Reel";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import {SYMBOLS} from "./const"; // SymbolTileのインポート
+import {BET_COINS, INITIAL_COINS, SYMBOLS} from "./const"; // SymbolTileのインポート
 import {SymbolTile} from "./type";
 
 export const SlotMachine: React.FC = () => {
-  const [coins, setCoins] = useState(100);
+  const [coins, setCoins] = useState(INITIAL_COINS);
   const [reels, setReels] = useState<SymbolTile[]>(Array(3).fill(SYMBOLS[0])); // SymbolTile型の配列
 
   const handleSpin = () => {
@@ -14,10 +14,10 @@ export const SlotMachine: React.FC = () => {
       () => SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]
     );
     setReels(newReels);
-    setCoins((prev) => prev - 3);
+    setCoins((prev) => prev - BET_COINS);
     // 当たり判定
     if (new Set(newReels.map((tile) => tile.id)).size === 1) {
-      setCoins((prev) => prev - 3 + newReels[0].point); // 当たりならコインを追加
+      setCoins((prev) => prev - BET_COINS + newReels[0].point); // 当たりならコインを追加
     }
   };
 
@@ -36,7 +36,7 @@ export const SlotMachine: React.FC = () => {
         color="primary"
         style={{marginTop: "16px"}}
         onClick={handleSpin}
-        disabled={coins < 3}
+        disabled={coins < BET_COINS}
       >
         スピン
       </Button>
