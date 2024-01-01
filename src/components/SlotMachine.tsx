@@ -3,6 +3,7 @@ import { Reel } from "./Reel";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
+// const symbols = ["🍒", "🍋", "🍊", "🍇", "🍉"];
 const symbols = ["🍒", "🍋", "🍊", "🍇", "🍉"];
 
 export const SlotMachine: React.FC = () => {
