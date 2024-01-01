@@ -5,6 +5,9 @@ import Button from "@mui/material/Button";
 import {BET_COINS, INITIAL_COINS, SYMBOLS} from "./const"; // 定数のインポート
 import {SymbolTile} from "./type";
 import {spinReels} from "./func";
+// import jackpotGif from "../assets/images/jackpot.gif"; // GIF画像のインポート
+// import shiba_motivate from "../assets/shiba_motivate.gif"; // GIF画像のインポート
+// import shiba_motivate from "shiba_motivate.gif"; // GIF画像のインポート
 
 export const SlotMachine: React.FC = () => {
   const [coins, setCoins] = useState(INITIAL_COINS);
@@ -38,8 +41,8 @@ export const SlotMachine: React.FC = () => {
         スピン
       </Button>
       {isWin && <Box sx={{marginTop: 2}}>勝利！</Box>}
-      {isJackpot && <Box sx={{marginTop: 2}}>ジャックポット！</Box>}{" "}
-      {/* ジャックポット表示 */}
+      {isJackpot && <Box sx={{marginTop: 2}}>ジャックポット！</Box>}
+      <img src="/shiba_motivate.gif" alt="Motivated Shiba Inu" width="200" />
     </Box>
   );
 };
