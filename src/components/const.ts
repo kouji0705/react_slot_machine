@@ -49,10 +49,12 @@ export const SYMBOLS: SymbolTile[] = [
     id: SEVEN_CARD_ID,
     label: SEVEN_SYMBOL,
     point: 30,
+    isJackpot: true,
   },
   {
     id: WILD_CARD_ID,
     label: WILD_CARD_SYMBOL,
     point: 30,
+    isWildCard: true,
   },
 ];

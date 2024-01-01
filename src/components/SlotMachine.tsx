@@ -15,18 +15,6 @@ export const SlotMachine: React.FC = () => {
     setReels(newReels);
     setCoins((prev) => prev - BET_COINS + (win ? points : 0));
   };
-  // TODO リファクタリング前
-  //   const handleSpin = () => {
-  //     const newReels = reels.map(
-  //       () => SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]
-  //     );
-  //     setReels(newReels);
-  //     setCoins((prev) => prev - BET_COINS);
-  //     // 当たり判定
-  //     if (new Set(newReels.map((tile) => tile.id)).size === 1) {
-  //       setCoins((prev) => prev - BET_COINS + newReels[0].point); // 当たりならコインを追加
-  //     }
-  //   };
 
   const isWin = new Set(reels.map((tile) => tile.id)).size === 1;
 

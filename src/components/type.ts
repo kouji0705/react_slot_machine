@@ -19,6 +19,8 @@ export type SymbolTile = {
   id: SymbolId;
   label: SymbolLabel;
   point: number;
+  isWildCard?: boolean;
+  isJackpot?: boolean;
 };
 
 export type SymbolId =
