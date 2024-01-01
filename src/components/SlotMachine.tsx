@@ -6,18 +6,21 @@ import Button from "@mui/material/Button";
 const symbols = ["🍒", "🍋", "🍊", "🍇", "🍉"];
 
 export const SlotMachine: React.FC = () => {
+  const [coin, setCoin] = useState(50);
   const [reels, setReels] = useState(Array(3).fill(symbols[0]));
 
-  const spinReels = () => {
+  const handleSpin = () => {
     setReels(
       reels.map(() => symbols[Math.floor(Math.random() * symbols.length)])
     );
+    setCoin((prev) => prev - 3);
   };
 
   const isWin = new Set(reels).size === 1;
 
   return (
     <Box sx={{ textAlign: "center", marginTop: 4 }}>
+      <Box>Coinの枚数：{coin}枚</Box>
       <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
         {reels.map((symbol, index) => (
           <Reel key={index} symbol={symbol} />
@@ -27,7 +30,8 @@ export const SlotMachine: React.FC = () => {
         variant="contained"
         color="primary"
         style={{ marginTop: "16px" }}
-        onClick={spinReels}
+        onClick={handleSpin}
+        disabled={coin < 3}
       >
         スピン
       </Button>
