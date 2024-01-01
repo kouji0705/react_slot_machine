@@ -1,4 +1,4 @@
-import { SymbolTile } from "./type";
+import {SymbolTile} from "./type";
 
 export const CHERRY_ID = "cherry";
 export const LEMON_ID = "lemon";
@@ -28,14 +28,14 @@ export const SYMBOLS: SymbolTile[] = [
     label: ORANGE_SYMBOL,
     point: 10,
   },
-  {
-    id: GRAPE_ID,
-    label: GRAPE_SYMBOL,
-    point: 20,
-  },
-  {
-    id: WATERMELON_ID,
-    label: WATERMELON_SYMBOL,
-    point: 30,
-  },
+  //   {
+  //     id: GRAPE_ID,
+  //     label: GRAPE_SYMBOL,
+  //     point: 20,
+  //   },
+  //   {
+  //     id: WATERMELON_ID,
+  //     label: WATERMELON_SYMBOL,
+  //     point: 30,
+  //   },
 ];
