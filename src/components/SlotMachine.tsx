@@ -17,7 +17,7 @@ export const SlotMachine: React.FC = () => {
     setCoins((prev) => prev - 3);
     // 当たり判定
     if (new Set(newReels.map((tile) => tile.id)).size === 1) {
-      setCoins((prev) => prev - 3 + 100); // 当たりならコインを追加
+      setCoins((prev) => prev - 3 + newReels[0].point); // 当たりならコインを追加
     }
   };
 
