@@ -5,9 +5,7 @@ import Button from "@mui/material/Button";
 import {BET_COINS, INITIAL_COINS, SYMBOLS} from "./const"; // 定数のインポート
 import {SymbolTile} from "./type";
 import {spinReels} from "./func";
-// import jackpotGif from "../assets/images/jackpot.gif"; // GIF画像のインポート
-// import shiba_motivate from "../assets/shiba_motivate.gif"; // GIF画像のインポート
-// import shiba_motivate from "shiba_motivate.gif"; // GIF画像のインポート
+import {JackpotDialog} from "./Dialog";
 
 export const SlotMachine: React.FC = () => {
   const [coins, setCoins] = useState(INITIAL_COINS);
@@ -22,6 +20,11 @@ export const SlotMachine: React.FC = () => {
   };
 
   const isWin = new Set(reels.map((tile) => tile.id)).size === 1;
+
+  const [showDialog, setShowDialog] = useState(false);
+  const handleOpenDialog = () => {
+    setShowDialog(true);
+  };
 
   return (
     <Box sx={{textAlign: "center", marginTop: 4}}>
@@ -40,9 +43,12 @@ export const SlotMachine: React.FC = () => {
       >
         スピン
       </Button>
+      <div>
+        <Button onClick={handleOpenDialog}>ジャックポットを見る</Button>
+        {showDialog && <JackpotDialog />}
+      </div>
       {isWin && <Box sx={{marginTop: 2}}>勝利！</Box>}
       {isJackpot && <Box sx={{marginTop: 2}}>ジャックポット！</Box>}
-      <img src="/shiba_motivate.gif" alt="Motivated Shiba Inu" width="200" />
     </Box>
   );
 };
