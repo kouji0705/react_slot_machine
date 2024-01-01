@@ -2,17 +2,19 @@ import React, {useState} from "react";
 import {Reel} from "./Reel";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import {BET_COINS, INITIAL_COINS, SYMBOLS} from "./const"; // SymbolTileのインポート
+import {BET_COINS, INITIAL_COINS, SYMBOLS} from "./const"; // 定数のインポート
 import {SymbolTile} from "./type";
 import {spinReels} from "./func";
 
 export const SlotMachine: React.FC = () => {
   const [coins, setCoins] = useState(INITIAL_COINS);
   const [reels, setReels] = useState<SymbolTile[]>(Array(3).fill(SYMBOLS[0])); // SymbolTile型の配列
+  const [isJackpot, setIsJackpot] = useState(false); // ジャックポット状態の追加
 
   const handleSpin = () => {
-    const {newReels, win, points} = spinReels(reels, SYMBOLS, BET_COINS);
+    const {newReels, win, jackpot, points} = spinReels(SYMBOLS, BET_COINS);
     setReels(newReels);
+    setIsJackpot(jackpot);
     setCoins((prev) => prev - BET_COINS + (win ? points : 0));
   };
 
@@ -36,6 +38,8 @@ export const SlotMachine: React.FC = () => {
         スピン
       </Button>
       {isWin && <Box sx={{marginTop: 2}}>勝利！</Box>}
+      {isJackpot && <Box sx={{marginTop: 2}}>ジャックポット！</Box>}{" "}
+      {/* ジャックポット表示 */}
     </Box>
   );
 };
