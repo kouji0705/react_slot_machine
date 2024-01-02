@@ -1,55 +1,54 @@
-import React, {useState} from "react";
-import {Reel} from "./Reel";
+import React, {useReducer} from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import {BET_COINS, INITIAL_COINS, SYMBOLS} from "../constants/symbols"; // 定数のインポート
-import {SymbolTile} from "../types/symbol";
-import {spinReels} from "../utils/spinReels";
+import {Reel} from "./Reel";
 import {JackpotDialog} from "./Dialog";
+import {spinReels} from "../utils/spinReels";
+import {INITIAL_COINS, SYMBOLS, BET_COINS} from "../constants/symbols";
+import {SlotMachineState} from "../types/state";
+import {slotMachineReducer} from "../utils/reducer";
 
-// ├── components
-// │   ├── slotMachine <<< イベントドメインモデルに関連する機能
-// │   │   ├── components <<< 個別ドメインモデルに関連するコンポーネント定義
-// │   │   ├── constants <<< 個別ドメインモデルに関連する定数定義
-// │   │   ├── hooks <<< レポジトリで実装したファンクションを使用するフック定義
-// │   │   └── stores <<< 個別ドメインモデルに関連するストア定義
-// │   │   └── types <<< 個別ドメインモデルから派生するデータ型定義
-// │   │   └── utils <<< 個別ドメインモデルで使用するユーティリティ関数定義
+const initialState: SlotMachineState = {
+  coins: INITIAL_COINS,
+  reels: Array(3).fill(SYMBOLS[0]),
+  isJackpot: false,
+};
 
 export const SlotMachine: React.FC = () => {
-  const [coins, setCoins] = useState(INITIAL_COINS);
-  const [reels, setReels] = useState<SymbolTile[]>(Array(3).fill(SYMBOLS[0])); // SymbolTile型の配列
-  const [isJackpot, setIsJackpot] = useState(false); // ジャックポット状態の追加
+  const [state, dispatch] = useReducer(slotMachineReducer, initialState);
 
   const handleSpin = () => {
-    const {newReels, win, jackpot, points} = spinReels(SYMBOLS, BET_COINS);
-    setReels(newReels);
-    setIsJackpot(jackpot);
-    setCoins((prev) => prev - BET_COINS + (win ? points : 0));
+    const results = spinReels(SYMBOLS, BET_COINS);
+    dispatch({type: "SPIN", results});
   };
 
-  const isWin = new Set(reels.map((tile) => tile.id)).size === 1;
+  const handleCloseJackpot = () => {
+    dispatch({type: "CLOSE_JACKPOT"});
+  };
 
   return (
     <Box sx={{textAlign: "center", marginTop: 4}}>
-      <Box>Coinの枚数：{coins}枚</Box>
+      <Box>Coinの枚数：{state.coins}枚</Box>
       <Box sx={{display: "flex", justifyContent: "center", gap: 2}}>
-        {reels.map((tile, index) => (
+        {state.reels.map((tile, index) => (
           <Reel key={index} symbol={tile.label} />
         ))}
       </Box>
       <Button
         variant="contained"
         color="primary"
-        style={{marginTop: "16px"}}
         onClick={handleSpin}
-        disabled={coins < BET_COINS}
+        disabled={state.coins < BET_COINS}
+        style={{marginTop: "16px"}}
       >
         スピン
       </Button>
-      {isJackpot && <JackpotDialog />}
-      {isWin && <Box sx={{marginTop: 2}}>勝利！</Box>}
-      {isJackpot && <Box sx={{marginTop: 2}}>ジャックポット！</Box>}
+      {/* {state.isJackpot && <JackpotDialog onClose={handleCloseJackpot} />} */}
+      {new Set(state.reels.map((tile) => tile.id)).size === 1 && (
+        <Box sx={{marginTop: 2}}>勝利！</Box>
+      )}
     </Box>
   );
 };
+
+export default SlotMachine;

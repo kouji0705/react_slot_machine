@@ -2,7 +2,12 @@ import React, {useState} from "react";
 import Dialog from "@mui/material/Dialog";
 import {Typography} from "@mui/material";
 
-export const JackpotDialog: React.FC = () => {
+export interface JackpotDialogProps {
+  onClose: () => void;
+}
+
+// export const JackpotDialog: React.FC = () => {
+export const JackpotDialog = () => {
   const [open, setOpen] = useState(true); // ダイアログの開閉状態
 
   // ダイアログを閉じる関数
