@@ -43,7 +43,7 @@ export const SlotMachine: React.FC = () => {
       >
         スピン
       </Button>
-      {/* {state.isJackpot && <JackpotDialog onClose={handleCloseJackpot} />} */}
+      {state.isJackpot && <JackpotDialog onClose={handleCloseJackpot} />}
       {new Set(state.reels.map((tile) => tile.id)).size === 1 && (
         <Box sx={{marginTop: 2}}>勝利！</Box>
       )}
