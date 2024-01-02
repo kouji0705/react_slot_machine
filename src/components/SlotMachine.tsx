@@ -21,11 +21,6 @@ export const SlotMachine: React.FC = () => {
 
   const isWin = new Set(reels.map((tile) => tile.id)).size === 1;
 
-  const [showDialog, setShowDialog] = useState(false);
-  const handleOpenDialog = () => {
-    setShowDialog(true);
-  };
-
   return (
     <Box sx={{textAlign: "center", marginTop: 4}}>
       <Box>Coinの枚数：{coins}枚</Box>
