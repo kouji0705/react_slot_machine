@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import {Reel} from "./Reel";
 import {JackpotDialog} from "./Dialog";
-import {spinReels} from "../utils/spinReels";
 import {SYMBOLS} from "../constants/symbols";
 import {SlotMachineState} from "../types/state";
 import {slotMachineReducer} from "../utils/reducer";
@@ -22,8 +21,7 @@ export const SlotMachine: React.FC = () => {
   const [state, dispatch] = useReducer(slotMachineReducer, initialState);
 
   const handleSpin = () => {
-    const results = spinReels(SYMBOLS, BET_COINS);
-    dispatch({type: SPIN_ACTION, results});
+    dispatch({type: SPIN_ACTION});
   };
 
   const handleCloseJackpot = () => {

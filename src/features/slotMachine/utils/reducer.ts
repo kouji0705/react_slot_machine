@@ -1,7 +1,9 @@
 import {CLOSE_JACKPOT_ACTION, SPIN_ACTION} from "../constants/actions";
 import {BET_COINS} from "../constants/slot";
+import {SYMBOLS} from "../constants/symbols";
 import {SlotMachineAction} from "../types/action";
 import {SlotMachineState} from "../types/state";
+import {spinReels} from "./spinReels";
 
 export const slotMachineReducer = (
   state: SlotMachineState,
@@ -9,7 +11,8 @@ export const slotMachineReducer = (
 ): SlotMachineState => {
   switch (action.type) {
     case SPIN_ACTION:
-      const {newReels, win, jackpot, points} = action.results;
+      const results = spinReels(SYMBOLS, BET_COINS);
+      const {newReels, win, jackpot, points} = results;
       return {
         ...state,
         reels: newReels,
