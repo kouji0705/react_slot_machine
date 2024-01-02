@@ -9,7 +9,6 @@ export const slotMachineReducer = (
 ): SlotMachineState => {
   switch (action.type) {
     case SPIN_ACTION:
-      console.log("=======HIT8 ", action.results, "=======");
       const {newReels, win, jackpot, points} = action.results;
       return {
         ...state,

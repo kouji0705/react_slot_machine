@@ -21,7 +21,6 @@ export const SlotMachine: React.FC = () => {
 
   const handleSpin = () => {
     const results = spinReels(SYMBOLS, BET_COINS);
-    console.log("============== results", results);
     dispatch({type: SPIN_ACTION, results});
   };
 
@@ -53,5 +52,3 @@ export const SlotMachine: React.FC = () => {
     </Box>
   );
 };
-
-export default SlotMachine;

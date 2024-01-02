@@ -1,6 +1,6 @@
 import React from "react";
-import {SlotMachine} from "./features/slotMachine/components";
 import {ThemeProvider, createTheme} from "@mui/material";
+import {SlotMachinePage} from "./pages";
 
 const theme = createTheme({
   palette: {
@@ -13,7 +13,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <SlotMachine />
+      <SlotMachinePage />
     </ThemeProvider>
   );
 }
