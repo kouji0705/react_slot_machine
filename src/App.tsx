@@ -1,5 +1,5 @@
 import React from "react";
-import {SlotMachine} from "./features/slotMachine/components/SlotMachine";
+import {SlotMachine} from "./features/slotMachine/components";
 import {ThemeProvider, createTheme} from "@mui/material";
 
 const theme = createTheme({

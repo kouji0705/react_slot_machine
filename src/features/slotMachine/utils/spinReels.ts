@@ -20,9 +20,8 @@ export const spinReels = (
   let points = 0;
 
   if (isJackpot) {
-    // ジャックポットの場合
     win = true;
-    points = 100; // ジャックポット時のポイント
+    points = 30; // ジャックポット時のポイント
   } else if (
     new Set(
       newReels.map((tile) =>

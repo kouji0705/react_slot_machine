@@ -1,6 +1,6 @@
 import React from "react";
 import {render, fireEvent, screen} from "@testing-library/react";
-import {SlotMachine} from "./SlotMachine";
+import {SlotMachine} from ".";
 
 describe("SlotMachine コンポーネント", () => {
   test("初期レンダリングでスピンボタンが表示される", () => {

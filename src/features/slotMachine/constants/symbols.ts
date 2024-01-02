@@ -1,8 +1,5 @@
 import {SymbolTile} from "../types/symbol";
 
-export const INITIAL_COINS = 100;
-export const BET_COINS = 3;
-
 export const CHERRY_ID = "cherry";
 export const LEMON_ID = "lemon";
 export const ORANGE_ID = "orange";

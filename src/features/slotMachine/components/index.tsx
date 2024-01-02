@@ -4,9 +4,11 @@ import Button from "@mui/material/Button";
 import {Reel} from "./Reel";
 import {JackpotDialog} from "./Dialog";
 import {spinReels} from "../utils/spinReels";
-import {INITIAL_COINS, SYMBOLS, BET_COINS} from "../constants/symbols";
+import {SYMBOLS} from "../constants/symbols";
 import {SlotMachineState} from "../types/state";
 import {slotMachineReducer} from "../utils/reducer";
+import {INITIAL_COINS, BET_COINS} from "../constants/slot";
+import {CLOSE_JACKPOT_ACTION, SPIN_ACTION} from "../constants/actions";
 
 const initialState: SlotMachineState = {
   coins: INITIAL_COINS,
@@ -19,11 +21,12 @@ export const SlotMachine: React.FC = () => {
 
   const handleSpin = () => {
     const results = spinReels(SYMBOLS, BET_COINS);
-    dispatch({type: "SPIN", results});
+    console.log("============== results", results);
+    dispatch({type: SPIN_ACTION, results});
   };
 
   const handleCloseJackpot = () => {
-    dispatch({type: "CLOSE_JACKPOT"});
+    dispatch({type: CLOSE_JACKPOT_ACTION});
   };
 
   return (
