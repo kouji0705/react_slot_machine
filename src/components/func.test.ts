@@ -12,7 +12,7 @@ describe("spinReels function", () => {
     // モック関数を使用して常に同じシンボルを返すようにする
     jest.spyOn(global.Math, "random").mockReturnValue(0);
 
-    const {newReels, win, points} = spinReels(testSymbols, testSymbols, 3);
+    const {newReels, win, points} = spinReels(testSymbols, 3);
 
     expect(win).toBe(true);
     expect(points).toBe(testSymbols[0].point);
@@ -24,7 +24,7 @@ describe("spinReels function", () => {
 
   test("should return win false and points zero when not all reels match", () => {
     // ランダムな結果を得るためにモックを使用しない
-    const {win, points} = spinReels(testSymbols, testSymbols, 3);
+    const {win, points} = spinReels(testSymbols, 3);
 
     expect(win).toBe(false);
     expect(points).toBe(0);

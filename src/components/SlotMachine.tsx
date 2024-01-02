@@ -2,31 +2,22 @@ import React, {useState} from "react";
 import {Reel} from "./Reel";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import {BET_COINS, INITIAL_COINS, SYMBOLS} from "./const"; // SymbolTileのインポート
+import {BET_COINS, INITIAL_COINS, SYMBOLS} from "./const"; // 定数のインポート
 import {SymbolTile} from "./type";
 import {spinReels} from "./func";
+import {JackpotDialog} from "./Dialog";
 
 export const SlotMachine: React.FC = () => {
   const [coins, setCoins] = useState(INITIAL_COINS);
   const [reels, setReels] = useState<SymbolTile[]>(Array(3).fill(SYMBOLS[0])); // SymbolTile型の配列
+  const [isJackpot, setIsJackpot] = useState(false); // ジャックポット状態の追加
 
   const handleSpin = () => {
-    const {newReels, win, points} = spinReels(reels, SYMBOLS, BET_COINS);
+    const {newReels, win, jackpot, points} = spinReels(SYMBOLS, BET_COINS);
     setReels(newReels);
+    setIsJackpot(jackpot);
     setCoins((prev) => prev - BET_COINS + (win ? points : 0));
   };
-  // TODO リファクタリング前
-  //   const handleSpin = () => {
-  //     const newReels = reels.map(
-  //       () => SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]
-  //     );
-  //     setReels(newReels);
-  //     setCoins((prev) => prev - BET_COINS);
-  //     // 当たり判定
-  //     if (new Set(newReels.map((tile) => tile.id)).size === 1) {
-  //       setCoins((prev) => prev - BET_COINS + newReels[0].point); // 当たりならコインを追加
-  //     }
-  //   };
 
   const isWin = new Set(reels.map((tile) => tile.id)).size === 1;
 
@@ -47,7 +38,9 @@ export const SlotMachine: React.FC = () => {
       >
         スピン
       </Button>
+      {isJackpot && <JackpotDialog />}
       {isWin && <Box sx={{marginTop: 2}}>勝利！</Box>}
+      {isJackpot && <Box sx={{marginTop: 2}}>ジャックポット！</Box>}
     </Box>
   );
 };
