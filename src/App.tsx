@@ -1,6 +1,6 @@
 import React from "react";
-import { SlotMachine } from "./components/SlotMachine";
-import { ThemeProvider, createTheme } from "@mui/material";
+import {SlotMachine} from "./features/slotMachine/components/SlotMachine";
+import {ThemeProvider, createTheme} from "@mui/material";
 
 const theme = createTheme({
   palette: {

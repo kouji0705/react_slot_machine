@@ -1,5 +1,5 @@
-import {WILD_CARD_ID, SEVEN_CARD_ID} from "./const";
-import {SymbolTile} from "./type";
+import {WILD_CARD_ID, SEVEN_CARD_ID} from "../constants/symbols";
+import {SymbolTile} from "../types/symbol";
 
 export const spinReels = (
   symbols: SymbolTile[],

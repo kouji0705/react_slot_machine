@@ -13,7 +13,7 @@ import {
   WATERMELON_SYMBOL,
   WILD_CARD_ID,
   WILD_CARD_SYMBOL,
-} from "./const";
+} from "../constants/symbols";
 
 export type SymbolTile = {
   id: SymbolId;

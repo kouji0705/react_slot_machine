@@ -1,4 +1,4 @@
-import {SymbolTile} from "./type";
+import {SymbolTile} from "../types/symbol";
 
 export const INITIAL_COINS = 100;
 export const BET_COINS = 3;
