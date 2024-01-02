@@ -9,6 +9,7 @@ import {SlotMachineState} from "../types/state";
 import {slotMachineReducer} from "../utils/reducer";
 import {INITIAL_COINS, BET_COINS} from "../constants/slot";
 import {CLOSE_JACKPOT_ACTION, SPIN_ACTION} from "../constants/actions";
+import styled from "@emotion/styled";
 
 const initialState: SlotMachineState = {
   coins: INITIAL_COINS,
@@ -29,26 +30,40 @@ export const SlotMachine: React.FC = () => {
   };
 
   return (
-    <Box sx={{textAlign: "center", marginTop: 4}}>
+    <RootContainer>
       <Box>Coinの枚数：{state.coins}枚</Box>
-      <Box sx={{display: "flex", justifyContent: "center", gap: 2}}>
+      <Reels>
         {state.reels.map((tile, index) => (
           <Reel key={index} symbol={tile.label} />
         ))}
-      </Box>
-      <Button
+      </Reels>
+      <SpinButton
         variant="contained"
         color="primary"
         onClick={handleSpin}
         disabled={state.coins < BET_COINS}
-        style={{marginTop: "16px"}}
       >
         スピン
-      </Button>
+      </SpinButton>
       {state.isJackpot && <JackpotDialog onClose={handleCloseJackpot} />}
       {new Set(state.reels.map((tile) => tile.id)).size === 1 && (
         <Box sx={{marginTop: 2}}>勝利！</Box>
       )}
-    </Box>
+    </RootContainer>
   );
 };
+
+const RootContainer = styled(Box)(() => ({
+  textAlign: "center",
+  marginTop: "4px",
+}));
+
+const Reels = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "center",
+  gap: 2,
+}));
+
+const SpinButton = styled(Button)(() => ({
+  marginTop: "16px",
+}));
