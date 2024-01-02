@@ -1,5 +1,5 @@
-import {spinReels} from "./func";
-import {SymbolTile} from "./type";
+import {spinReels} from "./spinReels";
+import {SymbolTile} from "../types/symbol";
 
 describe("spinReels function", () => {
   // テスト用のシンボルデータ

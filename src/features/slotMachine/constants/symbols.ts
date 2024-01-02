@@ -1,7 +1,4 @@
-import {SymbolTile} from "./type";
-
-export const INITIAL_COINS = 100;
-export const BET_COINS = 3;
+import {SymbolTile} from "../types/symbol";
 
 export const CHERRY_ID = "cherry";
 export const LEMON_ID = "lemon";

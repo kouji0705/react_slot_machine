@@ -1,5 +1,5 @@
-import {WILD_CARD_ID, SEVEN_CARD_ID} from "./const";
-import {SymbolTile} from "./type";
+import {WILD_CARD_ID, SEVEN_CARD_ID} from "../constants/symbols";
+import {SymbolTile} from "../types/symbol";
 
 export const spinReels = (
   symbols: SymbolTile[],
@@ -20,9 +20,8 @@ export const spinReels = (
   let points = 0;
 
   if (isJackpot) {
-    // ジャックポットの場合
     win = true;
-    points = 100; // ジャックポット時のポイント
+    points = 30; // ジャックポット時のポイント
   } else if (
     new Set(
       newReels.map((tile) =>
