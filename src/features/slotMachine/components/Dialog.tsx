@@ -6,7 +6,6 @@ export interface JackpotDialogProps {
   onClose: () => void;
 }
 
-// export const JackpotDialog: React.FC = () => {
 export const JackpotDialog = () => {
   const [open, setOpen] = useState(true); // ダイアログの開閉状態
 

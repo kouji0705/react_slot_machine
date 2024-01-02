@@ -1,7 +1,7 @@
 import {SymbolTile} from "./symbol";
 
-export interface SlotMachineState {
+export type SlotMachineState = {
   coins: number;
   reels: SymbolTile[];
   isJackpot: boolean;
-}
+};
