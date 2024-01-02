@@ -4,4 +4,5 @@ export type SlotMachineState = {
   coins: number;
   reels: SymbolTile[];
   isJackpot: boolean;
+  isWin: boolean;
 };

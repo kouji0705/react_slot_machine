@@ -15,6 +15,7 @@ const initialState: SlotMachineState = {
   coins: INITIAL_COINS,
   reels: Array(3).fill(SYMBOLS[0]),
   isJackpot: false,
+  isWin: false,
 };
 
 export const SlotMachine: React.FC = () => {
@@ -46,9 +47,7 @@ export const SlotMachine: React.FC = () => {
         スピン
       </SpinButton>
       {state.isJackpot && <JackpotDialog onClose={handleCloseJackpot} />}
-      {new Set(state.reels.map((tile) => tile.id)).size === 1 && (
-        <DisplayWin>勝利！</DisplayWin>
-      )}
+      {state.isWin && <DisplayWin>勝利！</DisplayWin>}
     </RootContainer>
   );
 };

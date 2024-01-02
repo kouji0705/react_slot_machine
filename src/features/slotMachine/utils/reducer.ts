@@ -15,6 +15,7 @@ export const slotMachineReducer = (
         reels: newReels,
         isJackpot: jackpot,
         coins: state.coins - BET_COINS + (win ? points : 0),
+        isWin: win,
       };
     case CLOSE_JACKPOT_ACTION:
       return {...state, isJackpot: false};
