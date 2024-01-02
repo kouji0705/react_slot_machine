@@ -47,7 +47,7 @@ export const SlotMachine: React.FC = () => {
       </SpinButton>
       {state.isJackpot && <JackpotDialog onClose={handleCloseJackpot} />}
       {new Set(state.reels.map((tile) => tile.id)).size === 1 && (
-        <Box sx={{marginTop: 2}}>勝利！</Box>
+        <DisplayWin>勝利！</DisplayWin>
       )}
     </RootContainer>
   );
@@ -66,4 +66,8 @@ const Reels = styled(Box)(() => ({
 
 const SpinButton = styled(Button)(() => ({
   marginTop: "16px",
+}));
+
+const DisplayWin = styled(Box)(() => ({
+  marginTop: "2px",
 }));
